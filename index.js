@@ -5,14 +5,22 @@ const fruitObjArr = [
   { fruit: "plum", isGood: false },
 ];
 
-const printFruits = (arr) => {
+const checkFruits = (fn, arr) => {
+  const tempArr = [];
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].isGood === true) {
-      console.log(`I like to eat ${arr[i].fruit}s`);
+      tempArr.push(`I like to eat ${arr[i].fruit}s`);
     } else {
-      console.log(`I don't like to eat ${arr[i].fruit}s`);
+      tempArr.push(`I don't like to eat ${arr[i].fruit}s`);
     }
+  }
+  fn(tempArr);
+};
+
+const printFruits = (arr) => {
+  for (let i = 0; i < arr.length; i++) {
+    console.log(arr[i]);
   }
 };
 
-printFruits(fruitObjArr);
+checkFruits(printFruits, fruitObjArr);
